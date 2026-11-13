@@ -17,3 +17,5 @@ Inventarios = {
  }
 
 #Este comentario es para probar la sincronizacion del codigo con Github
+#HOLA 
+
