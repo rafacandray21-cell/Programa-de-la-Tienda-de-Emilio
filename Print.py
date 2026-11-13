@@ -2,7 +2,7 @@
 
 #Hago este comentario para ver si se actualiza dentro de VSCODE 
 
- # Tienda de Emilio - Registro de ventas de productos tecnológicos
+# Tienda de Emilio - Registro de ventas de productos tecnológicos
 
 Inventarios = {
     "LP01": {
