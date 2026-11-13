@@ -46,3 +46,52 @@ Inventarios = {
         }
     }
 }
+
+# Lista donde se guardan los productos que el cliente va comprando
+carrito = []
+
+def buscar_producto(texto):
+    texto = texto.strip().lower()
+    for codigo, datos in Inventarios.items():
+        if texto == codigo.lower() or texto == datos["articulo"].lower():
+            return codigo
+    return None
+    
+
+def buscar_marca(texto, marcas):
+    """Busca la marca por número de la lista (1, 2, 3) o por nombre. Devuelve la marca o None."""
+    texto = texto.strip()
+    lista_marcas = list(marcas.keys())
+
+    if texto.isdigit():
+        numero = int(texto)
+        if 1 <= numero <= len(lista_marcas):
+            return lista_marcas[numero - 1]
+        return None
+
+    for marca in lista_marcas:
+        if texto.lower() == marca.lower():
+            return marca
+    return None
+
+
+def agregar_al_carrito(articulo, marca, precio, cantidad):
+    """Agrega un producto al carrito. Si ya estaba, solo le suma la cantidad."""
+    for item in carrito:
+        if item["articulo"] == articulo and item["marca"] == marca:
+            item["cantidad"] += cantidad
+            return
+    carrito.append({
+        "articulo": articulo,
+        "marca": marca,
+        "precio": precio,
+        "cantidad": cantidad,
+    })
+
+
+def registrar_producto():
+    """Pide producto, marca y cantidad. Devuelve True si se agregó al carrito."""
+    # Mostrar los productos disponibles
+    print("\nProductos disponibles:")
+    for codigo, datos in Inventarios.items():
+        print(f"  {codigo} - {datos['articulo']}")
