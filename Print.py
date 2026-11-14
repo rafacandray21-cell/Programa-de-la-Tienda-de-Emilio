@@ -95,3 +95,10 @@ def registrar_producto():
     print("\nProductos disponibles:")
     for codigo, datos in Inventarios.items():
         print(f"  {codigo} - {datos['articulo']}")
+    
+    # Pedir el producto
+    producto_texto = input("\nIngrese el producto que va a comprar el cliente: ")
+    codigo = buscar_producto(producto_texto)
+    if codigo is None:
+        print("Ese producto no está en el inventario. Intente de nuevo.")
+        return False
