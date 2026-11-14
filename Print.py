@@ -50,6 +50,7 @@ Inventarios = {
 # Lista donde se guardan los productos que el cliente va comprando
 carrito = []
 
+# Función para buscar cada producto en el diccionario de Inventarios
 def buscar_producto(texto):
     texto = texto.strip().lower()
     for codigo, datos in Inventarios.items():
@@ -57,7 +58,7 @@ def buscar_producto(texto):
             return codigo
     return None
     
-
+# Función para buscar la marca en el diccionario de cada producto 
 def buscar_marca(texto, marcas):
     """Busca la marca por número de la lista (1, 2, 3) o por nombre. Devuelve la marca o None."""
     texto = texto.strip()
@@ -74,7 +75,7 @@ def buscar_marca(texto, marcas):
             return marca
     return None
 
-
+# Función para agregar los productos que compran los clientes en la lista del carrito
 def agregar_al_carrito(articulo, marca, precio, cantidad):
     """Agrega un producto al carrito. Si ya estaba, solo le suma la cantidad."""
     for item in carrito:
@@ -88,7 +89,7 @@ def agregar_al_carrito(articulo, marca, precio, cantidad):
         "cantidad": cantidad,
     })
 
-
+# Función para registrar los productos que compra el cliente
 def registrar_producto():
     """Pide producto, marca y cantidad. Devuelve True si se agregó al carrito."""
     # Mostrar los productos disponibles
