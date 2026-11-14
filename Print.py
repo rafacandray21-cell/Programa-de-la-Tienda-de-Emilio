@@ -102,3 +102,6 @@ def registrar_producto():
     if codigo is None:
         print("Ese producto no está en el inventario. Intente de nuevo.")
         return False
+    
+    articulo = Inventarios[codigo]["articulo"]
+    marcas = Inventarios[codigo]["marcas"]
