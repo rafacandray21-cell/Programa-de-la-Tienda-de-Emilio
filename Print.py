@@ -103,5 +103,6 @@ def registrar_producto():
         print("Ese producto no está en el inventario. Intente de nuevo.")
         return False
     
+    # Definición de las variables: articulo y marcas
     articulo = Inventarios[codigo]["articulo"]
     marcas = Inventarios[codigo]["marcas"]
