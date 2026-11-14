@@ -106,3 +106,10 @@ def registrar_producto():
     # Definición de las variables: articulo y marcas
     articulo = Inventarios[codigo]["articulo"]
     marcas = Inventarios[codigo]["marcas"]
+    
+    # Mostrar las marcas con su precio
+    print(f"\nMarcas disponibles de {articulo}:")
+    numero = 1
+    for marca, precio in marcas.items():
+        print(f"  {numero}. {marca}: ${precio:,.2f}")
+        numero += 1
