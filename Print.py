@@ -145,3 +145,32 @@ def imprimir_ticket():
         
     print(f"Total a pagar: $ {total:,.2f}")
     print("---Gracias por su compra---")
+
+
+
+    def pedir_siguiente_paso():
+        """Pregunta qué hacer después de cada compra. Devuelve "1", "2", o "3". """
+        while True: 
+            print("\n¿Qué desea hacer?") 
+            print("1. Agregrar otro producto")
+            print("2. Imprimir factura")
+            print("3. Cerrar sistema")
+            opcion = input("\nOpcion: ").strip()
+
+            if opcion in ("1", "2", "3"): 
+                return opcion 
+            print("Opcion no válida. Escriba 1, 2 o 3. ")
+
+
+            # Programa principal 
+            sistema_activo = True 
+
+            while sistema_activo:
+                print("\n--Bienvenido a tienda de Emilio--")
+                print("Seleccione una opción:\n")
+                print("1.Registra venta de producto")
+                print("2. Salir del sistema")
+
+                opcion = input("\nOpcion: ").strip()
+
+
