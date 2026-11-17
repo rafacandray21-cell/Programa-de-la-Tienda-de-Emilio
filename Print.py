@@ -8,41 +8,41 @@ Inventarios = {
     "LP01": {
         "articulo": "Laptop",
         "marcas": {
-            "MacBook": 999.00,   # MacBook Air 
-            "HP": 499.00,        # HP 15 
-            "Dell": 529.00,      # Dell Inspiron 3520
+            "MacBook": 999.00,   
+            "HP": 499.00,        
+            "Dell": 529.00,      
         }
     },
     "MS01": {
         "articulo": "Mouse",
         "marcas": {
-            "Logitech": 11.17,   # Mouse inalámbrico Logitech 
-            "Razer": 29.90,      # Mouse gaming Razer 
-            "HP": 14.90,         # Mouse óptico inalámbrico HP 
+            "Logitech": 11.17,   
+            "Razer": 29.90,      
+            "HP": 14.90,         
         }
     },
     "TC01": {
         "articulo": "Teclado",
         "marcas": {
-            "Logitech": 25.00,   # Teclado inalámbrico Logitech 
-            "Redragon": 79.00,   # Kit teclado + mouse Redragon
-            "Corsair": 34.99,    # Teclado Corsair    
+            "Logitech": 25.00, 
+            "Redragon": 79.00, 
+            "Corsair": 34.99,      
         }
     },
     "AU01": {
         "articulo": "Audifonos",
         "marcas": {
-            "Sony": 44.90,       # Audífonos Bluetooth Sony 
-            "JBL": 39.90,        # Audífonos inalámbricos JBL
-            "Apple": 189.00,     # Apple AirPods 
+            "Sony": 44.90,     
+            "JBL": 39.90,      
+            "Apple": 189.00,    
         }
     },
     "CE01": {
         "articulo": "Celular",
         "marcas": {
-            "Samsung": 135.00,   # Samsung Galaxy 
-            "iPhone": 869.00,    # iPhone 16e
-            "Xiaomi": 199.00,    # Xiaomi Redmi 
+            "Samsung": 135.00,   
+            "iPhone": 869.00,    
+            "Xiaomi": 199.00,  
         }
     }
 }
