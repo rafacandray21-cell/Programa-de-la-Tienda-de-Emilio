@@ -119,7 +119,7 @@ def registrar_producto():
     marca_texto = input("\n Seleccione la marca: ")
     marca = buscar_marca(marca_texto, marcas)
     if marca is None: 
-        print("Esa marco no está disponible. Por favor, seleccione un codigo válido")
+        print("Esa marca no está disponible. Por favor, seleccione un codigo válido")
         return False 
     
     #Aqui el cajero ingresará la cantidad de articulos que se solicitó de esa marca selccionada 
@@ -143,12 +143,9 @@ def imprimir_ticket():
     
     total = 0
     for item in carrito: 
-        subtotal = item["Precio"] * item["cantidad"] 
+        subtotal = item["precio"] * item["cantidad"] 
         total += subtotal
         print(f"\n Producto: {item['articulo']} {item['marca']}")    
         
     print(f"Total a pagar: $ {total:,.2f}")
     print("---Gracias por su compra---")
-        
-        
-        
