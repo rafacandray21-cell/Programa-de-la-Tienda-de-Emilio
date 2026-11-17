@@ -114,3 +114,41 @@ def registrar_producto():
     for marca, precio in marcas.items():
         print(f"  {numero}. {marca}: ${precio:,.2f}")
         numero += 1
+
+    #Se solicitará por medio del codigo del producto la marca que desea el cajero 
+    marca_texto = input("\n Seleccione la marca: ")
+    marca = buscar_marca(marca_texto, marcas)
+    if marca is None: 
+        print("Esa marco no está disponible. Por favor, seleccione un codigo válido")
+        return False 
+    
+    #Aqui el cajero ingresará la cantidad de articulos que se solicitó de esa marca selccionada 
+    cantidad_texto = input("Ingrese la cantidad de articulos: ") .strip()
+    if not cantidad_texto.isdigit() or int(cantidad_texto) <= 0:
+        print("La cantidad debe ser un número entero mayor que 0. Intente de nuevo.")
+        return False
+    cantidad = int(cantidad_texto)
+    
+    #Sa agregó la función de agregar al carrito
+    agregar_al_carrito(articulo, marca, marcas[marca], cantidad)
+    subtotal = marcas[marca] * cantidad
+    print(f"\nAgregado: { cantidad} x {articulo} {marca} = ${subtotal:,.2f}")
+    return True 
+
+#Esta funcion es para imprimir el ticket final cuando se hayan agregado al carrito todos los articulos
+def imprimir_ticket(): 
+    "Imprime el ticket final con todos los productos del carrito y el total."
+    print("---Tienda de Emilio---")
+    print("--Ticket final--")
+    
+    total = 0
+    for item in carrito: 
+        subtotal = item["Precio"] * item["cantidad"] 
+        total += subtotal
+        print(f"\n Producto: {item['articulo']} {item['marca']}")    
+        
+    print(f"Total a pagar: $ {total:,.2f}")
+    print("---Gracias por su compra---")
+        
+        
+        
