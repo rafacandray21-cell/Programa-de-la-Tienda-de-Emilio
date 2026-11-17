@@ -1,8 +1,4 @@
-#Dejo este comentario para comprobar que se haya subido exitosamente este archivo a Github. 
-
-#Hago este comentario para ver si se actualiza dentro de VSCODE 
-
-# Tienda de Emilio - Registro de ventas de productos tecnológicos
+ # Tienda de Emilio - Registro de ventas de productos tecnológicos
 
 Inventarios = {
     "LP01": {
