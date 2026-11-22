@@ -223,7 +223,7 @@ sistema_activo = True
 while sistema_activo:
     print("\n--BIENVENIDO A LA TIENDA DE EMILIO--")
     print("Seleccione una opción:\n")
-    print("1.Registra venta de producto")
+    print("1. Registra venta de producto")
     print("2. Salir del sistema")
     print("3. Ver ventas anteriores")
 

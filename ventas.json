@@ -1,0 +1,14 @@
+[
+  {
+    "fecha": "2026-11-22 14:37",
+    "items": [
+      {
+        "articulo": "Laptop",
+        "marca": "HP",
+        "precio": 499.0,
+        "cantidad": 3
+      }
+    ],
+    "total": 1497.0
+  }
+]
