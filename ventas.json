@@ -10,5 +10,23 @@
       }
     ],
     "total": 1497.0
+  },
+  {
+    "fecha": "2026-11-22 15:25",
+    "items": [
+      {
+        "articulo": "Laptop",
+        "marca": "MacBook",
+        "precio": 999.0,
+        "cantidad": 2
+      },
+      {
+        "articulo": "Mouse",
+        "marca": "Razer",
+        "precio": 29.9,
+        "cantidad": 2
+      }
+    ],
+    "total": 2057.8
   }
 ]
