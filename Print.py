@@ -141,7 +141,9 @@ def imprimir_ticket():
     for item in carrito: 
         subtotal = item["precio"] * item["cantidad"] 
         total += subtotal
-        print(f"\n Producto: {item['articulo']} {item['marca']}")    
+        print(f"\n Producto: {item['articulo']} {item['marca']}")
+        print(f" Cantidad: {item['cantidad']}")
+        print(f" Precio: ${subtotal:,.2f}")    
         
     print(f"Total a pagar: $ {total:,.2f}")
     print("---Gracias por su compra---")
