@@ -1,4 +1,9 @@
 # Tienda de Emilio - Registro de ventas de productos tecnológicos
+import json
+import os
+from datetime import datetime
+
+ARCHIVO_VENTAS = "ventas.json"
 
 Inventarios = {
     "LP01": {
@@ -78,6 +83,7 @@ class Carrito:
 
         print(f"Total a pagar: $ {total:,.2f}")
         print("---Gracias por su compra---")
+        return total
 
     def vaciar(self):
         "Deja el carrito vacío para el siguiente cliente."
@@ -85,6 +91,44 @@ class Carrito:
 
 
 carrito = Carrito()
+
+# Funciones para guardar y recuperar las ventas en un archivo
+def cargar_ventas():
+    if not os.path.exists(ARCHIVO_VENTAS):
+        return []
+    try:
+        with open(ARCHIVO_VENTAS, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        print("No se pudo leer el archivo de ventas. Se inicia vacío.")
+        return []
+
+def guardar_ventas(ventas):
+    with open(ARCHIVO_VENTAS, "w", encoding="utf-8") as f:
+        json.dump(ventas, f, ensure_ascii=False, indent=2)
+
+def registrar_venta(historial):
+    """Imprime el ticket, guarda la venta en el historial y vacía el carrito."""
+    total = carrito.imprimir_ticket()
+    historial.append({
+        "fecha": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "items": [dict(item) for item in carrito.items],
+        "total": total,
+    })
+    guardar_ventas(historial)
+    carrito.vaciar()
+
+def mostrar_historial(historial):
+    """Muestra todas las ventas guardadas, incluidas las de sesiones anteriores."""
+    if not historial:
+        print("\nNo hay ventas registradas.")
+        return
+    for numero, venta in enumerate(historial, 1):
+        print(f"\nVenta {numero} - {venta['fecha']}")
+        for item in venta["items"]:
+            subtotal = item["precio"] * item["cantidad"]
+            print(f"  {item['articulo']} {item['marca']} x{item['cantidad']} = ${subtotal:,.2f}")
+        print(f"  Total: ${venta['total']:,.2f}")
 
 # Función para buscar cada producto en el diccionario de Inventarios
 def buscar_producto(texto):
@@ -173,6 +217,7 @@ def pedir_siguiente_paso():
 
 
 # Programa principal
+historial = cargar_ventas()
 sistema_activo = True
 
 while sistema_activo:
@@ -180,6 +225,7 @@ while sistema_activo:
     print("Seleccione una opción:\n")
     print("1.Registra venta de producto")
     print("2. Salir del sistema")
+    print("3. Ver ventas anteriores")
 
     opcion = input("\nOpcion: ").strip()
 
@@ -196,22 +242,23 @@ while sistema_activo:
 
                         elif siguiente == "2":
                             #Imprimir factura y dejar el carrito vacio para el siguiente cliente
-                            carrito.imprimir_ticket()
-                            carrito.vaciar()
+                            registrar_venta(historial)
                             break #Regresa al menu
 
                         elif siguiente == "3":
                             #Cerrar sistema: se imprime el ticket con lo que haya en el carrito
-                            carrito.imprimir_ticket()
-                            carrito.vaciar()
+                            registrar_venta(historial)
                             sistema_activo = False
                             break
 
     elif opcion == "2":
                     sistema_activo = False
 
+    elif opcion == "3":
+                    mostrar_historial(historial)
+
     else:
-                    print("Opcion no valida. Escribe 1 o 2")
+                    print("Opcion no valida. Escribe 1, 2 o 3")
 
 
 print("\n Cerrando el sistema... ¡Hasta luego!")
