@@ -134,43 +134,82 @@ def registrar_producto():
 #Esta funcion es para imprimir el ticket final cuando se hayan agregado al carrito todos los articulos
 def imprimir_ticket(): 
     "Imprime el ticket final con todos los productos del carrito y el total."
-    print("---Tienda de Emilio---")
+    print("---TIENDA DE EMILIO---")
     print("--Ticket final--")
     
     total = 0
     for item in carrito: 
         subtotal = item["precio"] * item["cantidad"] 
         total += subtotal
-        print(f"\n Producto: {item['articulo']} {item['marca']}")    
+        print(f"\n Producto: {item['articulo']} {item['marca']}")
+        print(f" Cantidad: {item['cantidad']}")
+        print(f" Precio: ${subtotal:,.2f}")    
         
     print(f"Total a pagar: $ {total:,.2f}")
     print("---Gracias por su compra---")
 
 
 
-    def pedir_siguiente_paso():
+def pedir_siguiente_paso():
         """Pregunta qué hacer después de cada compra. Devuelve "1", "2", o "3". """
         while True: 
             print("\n¿Qué desea hacer?") 
             print("1. Agregrar otro producto")
             print("2. Imprimir factura")
             print("3. Cerrar sistema")
-            opcion = input("\nOpcion: ").strip()
+            opcion = input("\n Opcion: ").strip()
 
             if opcion in ("1", "2", "3"): 
                 return opcion 
             print("Opcion no válida. Escriba 1, 2 o 3. ")
 
 
-            # Programa principal 
-            sistema_activo = True 
 
-            while sistema_activo:
-                print("\n--Bienvenido a tienda de Emilio--")
-                print("Seleccione una opción:\n")
-                print("1.Registra venta de producto")
-                print("2. Salir del sistema")
+# Programa principal 
+sistema_activo = True 
 
-                opcion = input("\nOpcion: ").strip()
+while sistema_activo:
+    print("\n--BIENVENIDO A LA TIENDA DE EMILIO--")
+    print("Seleccione una opción:\n")
+    print("1.Registra venta de producto")
+    print("2. Salir del sistema")
 
+    opcion = input("\nOpcion: ").strip()
+
+    if opcion == "1":
+        while True:
+                        agregado = registrar_producto()
+                        if not agregado:
+                            continue # Hubo error: se necesita volver a pedir el producto
+
+                        siguiente = pedir_siguiente_paso()
+
+                        if siguiente == "1":
+                            continue #Agregar otro producto
+
+                        elif siguiente == "2":
+                            #Imprimir factura y dejar el carrito vacio para el siguiente cliente
+                            imprimir_ticket()
+                            carrito.clear()
+                            break #Regresa al menu
+
+                        elif siguiente == "3":
+                            #Cerrar sistema: se imprime el ticket con lo que haya en el carrito
+                            imprimir_ticket()
+                            carrito.clear()
+                            sistema_activo = False
+                            break
+
+    elif opcion == "2":
+                    sistema_activo = False
+
+    else:
+                    print("Opcion no valida. Escribe 1 o 2")
+
+
+print("\n Cerrando el sistema... ¡Hasta luego!")
+
+            # Pausa para que la ventana no se cierre sola antes de leer el ticket
+
+input("\n Presione Enter para salir...")
 
